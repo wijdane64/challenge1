@@ -38,3 +38,4 @@ Route::get('/profile/{id}/{age}', [TestController::class, 'profile']);
 Route::get('/article/{id}', [TestController::class, 'showArticle']);
 Route::get('/profile/{id}/{age}', [TestController::class, 'profile'])
     ->where(['id' => '[0-9]+', 'age' => '[0-9]+']);
+    Route::get('/posts', [App\Http\Controllers\PostController::class, 'index']);

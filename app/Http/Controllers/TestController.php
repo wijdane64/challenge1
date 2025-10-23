@@ -29,7 +29,10 @@ Route::get('/salutation/{prenom}', [TestController::class, 'greet']);
 {
     return "Vous consultez l’article $id";
 }
-
+     public function index()
+{
+return 
+}
 }
 
 
