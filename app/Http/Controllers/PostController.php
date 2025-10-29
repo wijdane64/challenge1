@@ -21,12 +21,7 @@ class PostController extends Controller
      */
     public function create()
     {
-      $post = Post::create($validated);
-
-        return response()->json([
-            'message' => 'Post créé avec succès 🎉',
-            'data' => $post
-        ], 201);  
+      
     }
 
     /**
@@ -34,13 +29,27 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-      $validated = $request->validate([
+try {
+$validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'status' => 'nullable|string',
             'author' => 'nullable|string',
         ]);
+        $post = Post::create($validated);
 
+        return response()->json([
+            'message' => 'Post créé avec succès 🎉',
+            'data' => $post
+        ], 201);  
+
+} catch (Exception $e) {
+return response()->json([
+
+'error' => $e->getMessage()
+]);
+}
+      
     }
 
     /**

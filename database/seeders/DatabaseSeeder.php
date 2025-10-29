@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+         \App\Models\posts::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
@@ -20,3 +20,6 @@ class DatabaseSeeder extends Seeder
         // ]);
     }
 }
+Post::factory()->count(50)->create([
+            'user_id' => User::all()->random()->id,
+        ]);

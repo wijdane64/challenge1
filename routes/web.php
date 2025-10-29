@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\registerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,6 @@ Route::get('/article/{id}', [TestController::class, 'showArticle']);
 Route::get('/profile/{id}/{age}', [TestController::class, 'profile'])
     ->where(['id' => '[0-9]+', 'age' => '[0-9]+']);
     Route::get('/posts', [App\Http\Controllers\PostController::class, 'index']);
+    Route::get('/register',[registerController::class,'showform']);
+    Route::post('/register/submit',[registerController::class,'handleForm'])->name('register.submit');  
+
